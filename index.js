@@ -6,6 +6,7 @@ const refetch = (url, options = {}) => {
   } = options;
 
   const acceptedStatusCodes = /(2|3){1}[0-9]{1}[0-9]{1}/;
+  const retryStatusCodes = /(5){1}[0-9]{1}[0-9]{1}/
 
   const retryStrategies = {
     default: _ => retryDelay,
@@ -22,9 +23,13 @@ const refetch = (url, options = {}) => {
           if (acceptedStatusCodes.test(response.status)) {
             resolve(response);
           } else {
-            reject(
-              new Error(`Request failed with status code ${response.status}`)
-            );
+            if (retryStatusCodes.test(response.status)) {
+              setTimeout(_refetch, retryStrategies[retryStrategy](attempts));
+            } else {
+              reject(
+                new Error(`Request failed with status code ${response.status}`)
+              );
+            }
           }
         })
         .catch(error => {

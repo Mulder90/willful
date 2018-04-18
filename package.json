@@ -1,5 +1,5 @@
 {
-  "name": "refetch",
+  "name": "willful",
   "version": "0.1.0",
   "description": "A Fetch wrapper with retry strategies",
   "keywords": [
@@ -12,13 +12,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com:Mulder90/refetch.git"
+    "url": "git+https://github.com:Mulder90/willful.git"
   },
   "bugs": {
-    "url": "https://github.com:Mulder90/refetch/issues",
+    "url": "https://github.com:Mulder90/willful/issues",
     "email": "lore.cinque@gmail.com"
   },
-  "homepage": "https://github.com:Mulder90/refetch#readme",
+  "homepage": "https://github.com:Mulder90/willful#readme",
   "author": "Lorenzo Cinque <lore.cinque@gmail.com>",
   "license": "MIT",
   "devDependencies": {

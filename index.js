@@ -1,6 +1,6 @@
 const fetch = require('isomorphic-fetch');
 
-const refetch = (url, options = {}) => {
+const willful = (url, options = {}) => {
   const {
     maxRetry = 3,
     retryDelay = 1000,
@@ -18,7 +18,7 @@ const refetch = (url, options = {}) => {
   return new Promise((resolve, reject) => {
     let attempts = 0;
 
-    const _refetch = () => {
+    const _willful = () => {
       attempts += 1;
       fetch(url, options)
         .then(response => {
@@ -26,7 +26,7 @@ const refetch = (url, options = {}) => {
             resolve(response);
           } else {
             if (retryStatusCodes.test(response.status)) {
-              setTimeout(_refetch, retryStrategies[retryStrategy](attempts));
+              setTimeout(_willful, retryStrategies[retryStrategy](attempts));
             } else {
               reject(
                 new Error(`Request failed with status code ${response.status}`)
@@ -36,17 +36,17 @@ const refetch = (url, options = {}) => {
         })
         .catch(error => {
           if (attempts < maxRetry) {
-            setTimeout(_refetch, retryStrategies[retryStrategy](attempts));
+            setTimeout(_willful, retryStrategies[retryStrategy](attempts));
           } else {
             reject(
-              new Error(`Refetch failed after ${maxRetry} attempts: ${error}`)
+              new Error(`Willful failed after ${maxRetry} attempts: ${error}`)
             );
           }
         });
     };
 
-    _refetch();
+    _willful();
   });
 };
 
-module.exports = refetch;
+module.exports = willful;

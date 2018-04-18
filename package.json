@@ -1,12 +1,25 @@
 {
   "name": "refetch",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A Fetch wrapper with retry strategies",
+  "keywords": [
+    "fetch",
+    "retry"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "mocha test.js"
   },
-  "author": "Lorenzo Cinque",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:Mulder90/refetch.git"
+  },
+  "bugs": {
+    "url": "https://github.com:Mulder90/refetch/issues",
+    "email": "lore.cinque@gmail.com"
+  },
+  "homepage": "https://github.com:Mulder90/refetch#readme",
+  "author": "Lorenzo Cinque <lore.cinque@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.1.2",

@@ -1,3 +1,5 @@
+const fetch = require('isomorphic-fetch');
+
 const refetch = (url, options = {}) => {
   const {
     maxRetry = 3,
